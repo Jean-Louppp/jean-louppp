@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,28 +6,31 @@
     <title>Fiche Mémo Linux</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Fira Code', 'Courier New', monospace;
             margin: 0;
             scroll-behavior: smooth;
-            background-color: #f4f4f4;
+            background-color: #1e1e1e;
+            color: #00ff00;
         }
         header {
-            background-color: #004080;
-            color: white;
+            background-color: #000000;
+            color: #00ff00;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
         }
         nav {
-            background-color: #0066cc;
+            background-color: #222;
             display: flex;
             justify-content: center;
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         nav a {
-            color: white;
+            color: #00ff00;
             margin: 0 20px;
             text-decoration: none;
             font-weight: bold;
@@ -36,7 +38,7 @@
             transition: color 0.3s ease;
         }
         nav a:hover {
-            color: #ffcc00;
+            color: #ffff00;
         }
         section {
             padding: 30px;
@@ -44,17 +46,27 @@
             margin: auto;
         }
         h2 {
-            color: #004080;
-            border-bottom: 2px solid #004080;
+            color: #00ff00;
+            border-bottom: 2px solid #00ff00;
             padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h3 {
+            color: #00ffcc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .command-block {
-            background-color: #e8e8e8;
+            background-color: #2e2e2e;
             padding: 15px;
             border-radius: 5px;
             font-family: monospace;
             white-space: pre-wrap;
             margin: 10px 0;
+            border-left: 4px solid #00ff00;
         }
         @media (max-width: 600px) {
             nav {
@@ -69,6 +81,7 @@
 <body>
 
 <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Linux Logo" style="width:100px; display:block; margin:auto;">
     <h1>🧠 Fiche Mémo Linux - Évaluation Individuelle</h1>
 </header>
 
@@ -80,45 +93,45 @@
 <section id="configuration">
     <h2>🛠️ Configuration</h2>
 
-    <h3>Configurer l'adresse IP et le client DNS</h3>
+    <h3>⚙️ Configurer l'adresse IP et le client DNS</h3>
     <div class="command-block">
 sudo nano /etc/netplan/01-netcfg.yaml
 sudo netplan apply
     </div>
 
-    <h3>Changer le mot de passe root</h3>
+    <h3>🔐 Changer le mot de passe root</h3>
     <div class="command-block">
 sudo passwd root
     </div>
 
-    <h3>Installer un package</h3>
+    <h3>📦 Installer un package</h3>
     <div class="command-block">
 sudo apt update
 sudo apt install nom_du_package
     </div>
 
-    <h3>Créer un utilisateur</h3>
+    <h3>👤 Créer un utilisateur</h3>
     <div class="command-block">
 sudo adduser nom_utilisateur
     </div>
 
-    <h3>Créer un groupe</h3>
+    <h3>👥 Créer un groupe</h3>
     <div class="command-block">
 sudo groupadd nom_du_groupe
     </div>
 
-    <h3>Créer un répertoire et lui affecter des droits</h3>
+    <h3>📁 Créer un répertoire et lui affecter des droits</h3>
     <div class="command-block">
 mkdir /chemin/du/repertoire
 chmod 755 /chemin/du/repertoire
     </div>
 
-    <h3>Changer le propriétaire d’un répertoire</h3>
+    <h3>🔧 Changer le propriétaire d’un répertoire</h3>
     <div class="command-block">
 sudo chown utilisateur:groupe /chemin/du/repertoire
     </div>
 
-    <h3>Redémarrer un service</h3>
+    <h3>♻️ Redémarrer un service</h3>
     <div class="command-block">
 sudo systemctl restart nom_du_service
     </div>
@@ -127,7 +140,7 @@ sudo systemctl restart nom_du_service
 <section id="services">
     <h2>🌐 Services Réseaux</h2>
 
-    <h3>Créer une zone DNS principale</h3>
+    <h3>🌍 Créer une zone DNS principale</h3>
     <div class="command-block">
 # Fichier : /etc/bind/named.conf.local
 zone "monsite.local" {
@@ -136,19 +149,19 @@ zone "monsite.local" {
 };
     </div>
 
-    <h3>Créer des enregistrements DNS (A, CNAME)</h3>
+    <h3>📡 Créer des enregistrements DNS (A, CNAME)</h3>
     <div class="command-block">
 # Fichier : /etc/bind/db.monsite.local
 www     IN  A     192.168.1.10
 mail    IN  CNAME www
     </div>
 
-    <h3>Accéder au serveur en SSH</h3>
+    <h3>🔐 Accéder au serveur en SSH</h3>
     <div class="command-block">
 ssh utilisateur@adresse_ip
     </div>
 
-    <h3>Créer une étendue DHCP</h3>
+    <h3>📶 Créer une étendue DHCP</h3>
     <div class="command-block">
 # Fichier : /etc/dhcp/dhcpd.conf
 subnet 192.168.1.0 netmask 255.255.255.0 {
@@ -158,7 +171,7 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 }
     </div>
 
-    <h3>Partager un dossier par NFS</h3>
+    <h3>📂 Partager un dossier par NFS</h3>
     <div class="command-block">
 sudo apt install nfs-kernel-server
 sudo mkdir -p /srv/partage
@@ -167,7 +180,7 @@ sudo exportfs -a
 sudo systemctl restart nfs-kernel-server
     </div>
 
-    <h3>Partager un dossier par Samba</h3>
+    <h3>🗂️ Partager un dossier par Samba</h3>
     <div class="command-block">
 sudo apt install samba
 sudo nano /etc/samba/smb.conf
